@@ -33,7 +33,6 @@ const state = {
     quest: 'Поговорить с ноутбуком'
 };
 
-// ================= ИГРОК =================
 const player = {
     x: 100, y: GROUND_Y - 32,
     w: 22, h: 32, vx: 0, vy: 0,
@@ -58,34 +57,18 @@ const locations = {
             { x: 800, y: GROUND_Y - 120, w: 120, h: 12 }
         ],
         objects: [
-            {
-                x: 200, y: GROUND_Y - 40, w: 40, h: 40,
-                type: 'computer', name: '💻 Ноутбук',
-                dialogue: ['Старый ноутбук. Может, помайнить крипту?'],
-                action: 'scene_crypto_start',
-                needs: {}
-            },
-            {
-                x: 600, y: GROUND_Y - 60, w: 50, h: 60,
-                type: 'poster', name: '📈 Плакат',
-                dialogue: ['График биткоина. Если бы я купил его в 2010...'],
-                action: 'poster',
-                needs: {}
-            },
-            {
-                x: 400, y: GROUND_Y - 50, w: 40, h: 50,
-                type: 'bed', name: '🛏️ Кровать',
-                dialogue: ['Пора отдохнуть. Восстановит энергию и начнёт новый день.'],
-                action: 'sleep',
-                needs: {}
-            },
-            {
-                x: 1050, y: GROUND_Y - 40, w: 40, h: 60,
-                type: 'door', name: '🚪 На улицу',
-                dialogue: ['Выйти на Невский проспект.'],
-                action: 'goto_spb',
-                needs: {}
-            }
+            { x: 200, y: GROUND_Y - 40, w: 40, h: 40, type: 'computer', name: '💻 Ноутбук',
+              dialogue: ['Старый ноутбук. Может, помайнить крипту?'],
+              action: 'scene_crypto_start', needs: {} },
+            { x: 600, y: GROUND_Y - 60, w: 50, h: 60, type: 'poster', name: '📈 Плакат',
+              dialogue: ['График биткоина. Если бы я купил его в 2010...'],
+              action: 'poster', needs: {} },
+            { x: 400, y: GROUND_Y - 50, w: 40, h: 50, type: 'bed', name: '🛏️ Кровать',
+              dialogue: ['Пора отдохнуть. Восстановит энергию и начнёт новый день.'],
+              action: 'sleep', needs: {} },
+            { x: 1050, y: GROUND_Y - 40, w: 40, h: 60, type: 'door', name: '🚪 На улицу',
+              dialogue: ['Выйти на Невский проспект.'],
+              action: 'goto_spb', needs: {} }
         ]
     },
     spb: {
@@ -95,48 +78,24 @@ const locations = {
         music: 'spb',
         platforms: [{ x: 0, y: GROUND_Y, w: 2400, h: 60 }],
         objects: [
-            {
-                x: 250, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '🎸 Музыкант',
-                dialogue: ['Эй, парень! Хочешь подзаработать? Помоги выступить!'],
-                action: 'scene_street_music',
-                needs: {}
-            },
-            {
-                x: 600, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '💼 Инвестор',
-                dialogue: ['Есть идея для стартапа. Вложи 500₽ — расскажу.'],
-                action: 'scene_investor',
-                needs: {}
-            },
-            {
-                x: 1000, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '🪙 Трейдер',
-                dialogue: ['Новый токен! 100x за неделю! Рискнёшь?'],
-                action: 'scene_crypto_trade',
-                needs: {}
-            },
-            {
-                x: 1400, y: GROUND_Y - 60, w: 50, h: 60,
-                type: 'door', name: '☕ Кафе «Пушкинъ»',
-                dialogue: ['Уютное кафе. Здесь собираются стартаперы.'],
-                action: 'goto_cafe',
-                needs: {}
-            },
-            {
-                x: 1800, y: GROUND_Y - 60, w: 50, h: 60,
-                type: 'door', name: '🏢 Бизнес-центр',
-                dialogue: ['Огромное здание. Здесь делают деньги.'],
-                action: 'goto_business',
-                needs: { rep: 15 }
-            },
-            {
-                x: 2200, y: GROUND_Y - 40, w: 40, h: 60,
-                type: 'door', name: '🏠 Домой',
-                dialogue: ['Вернуться в общежитие.'],
-                action: 'goto_room',
-                needs: {}
-            }
+            { x: 250, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '🎸 Музыкант',
+              dialogue: ['Эй, парень! Хочешь подзаработать? Помоги выступить!'],
+              action: 'scene_street_music', needs: {} },
+            { x: 600, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '💼 Инвестор',
+              dialogue: ['Есть идея для стартапа. Вложи 500₽ — расскажу.'],
+              action: 'scene_investor', needs: {} },
+            { x: 1000, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '🪙 Трейдер',
+              dialogue: ['Новый токен! 100x за неделю! Рискнёшь?'],
+              action: 'scene_crypto_trade', needs: {} },
+            { x: 1400, y: GROUND_Y - 60, w: 50, h: 60, type: 'door', name: '☕ Кафе',
+              dialogue: ['Уютное кафе. Здесь собираются стартаперы.'],
+              action: 'goto_cafe', needs: {} },
+            { x: 1800, y: GROUND_Y - 60, w: 50, h: 60, type: 'door', name: '🏢 Бизнес-центр',
+              dialogue: ['Огромное здание. Здесь делают деньги.'],
+              action: 'goto_business', needs: { rep: 15 } },
+            { x: 2200, y: GROUND_Y - 40, w: 40, h: 60, type: 'door', name: '🏠 Домой',
+              dialogue: ['Вернуться в общежитие.'],
+              action: 'goto_room', needs: {} }
         ]
     },
     cafe: {
@@ -146,27 +105,15 @@ const locations = {
         music: 'cafe',
         platforms: [{ x: 0, y: GROUND_Y, w: 1200, h: 60 }],
         objects: [
-            {
-                x: 300, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '🧑‍💼 Стартапер',
-                dialogue: ['Ищу технического партнёра. Ты умеешь кодить?'],
-                action: 'scene_startup_pitch',
-                needs: { rep: 10 }
-            },
-            {
-                x: 700, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '👩‍💻 Программистка',
-                dialogue: ['Могу помочь с кодом, если будет идея.'],
-                action: 'scene_hire_dev',
-                needs: { money: 1000 }
-            },
-            {
-                x: 1050, y: GROUND_Y - 40, w: 40, h: 60,
-                type: 'door', name: '🚪 На улицу',
-                dialogue: ['Выйти из кафе.'],
-                action: 'goto_spb',
-                needs: {}
-            }
+            { x: 300, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '🧑‍💼 Стартапер',
+              dialogue: ['Ищу технического партнёра. Ты умеешь кодить?'],
+              action: 'scene_startup_pitch', needs: { rep: 10 } },
+            { x: 700, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '👩‍💻 Программистка',
+              dialogue: ['Могу помочь с кодом, если будет идея.'],
+              action: 'scene_hire_dev', needs: {} },
+            { x: 1050, y: GROUND_Y - 40, w: 40, h: 60, type: 'door', name: '🚪 На улицу',
+              dialogue: ['Выйти из кафе.'],
+              action: 'goto_spb', needs: {} }
         ]
     },
     business: {
@@ -176,34 +123,18 @@ const locations = {
         music: 'business',
         platforms: [{ x: 0, y: GROUND_Y, w: 1600, h: 60 }],
         objects: [
-            {
-                x: 400, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '🤝 Партнёр',
-                dialogue: ['Ваша идея интересна. Обсудим сотрудничество.'],
-                action: 'scene_partner',
-                needs: { rep: 25 }
-            },
-            {
-                x: 900, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '👔 Инвестор-ангел',
-                dialogue: ['Готов вложить, если покажете результаты.'],
-                action: 'scene_angel',
-                needs: { rep: 50 }
-            },
-            {
-                x: 1300, y: GROUND_Y - 60, w: 50, h: 60,
-                type: 'door', name: '🌃 Крыша',
-                dialogue: ['Подняться на крышу. Говорят, там отличный вид.'],
-                action: 'goto_roof',
-                needs: { rep: 70 }
-            },
-            {
-                x: 100, y: GROUND_Y - 40, w: 40, h: 60,
-                type: 'door', name: '🚪 На улицу',
-                dialogue: ['Выйти из здания.'],
-                action: 'goto_spb',
-                needs: {}
-            }
+            { x: 400, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '🤝 Партнёр',
+              dialogue: ['Ваша идея интересна. Обсудим сотрудничество.'],
+              action: 'scene_partner', needs: { rep: 25 } },
+            { x: 900, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '👔 Инвестор-ангел',
+              dialogue: ['Готов вложить, если покажете результаты.'],
+              action: 'scene_angel', needs: { rep: 50 } },
+            { x: 1300, y: GROUND_Y - 60, w: 50, h: 60, type: 'door', name: '🌃 Крыша',
+              dialogue: ['Подняться на крышу. Говорят, там отличный вид.'],
+              action: 'goto_roof', needs: { rep: 70 } },
+            { x: 100, y: GROUND_Y - 40, w: 40, h: 60, type: 'door', name: '🚪 На улицу',
+              dialogue: ['Выйти из здания.'],
+              action: 'goto_spb', needs: {} }
         ]
     },
     roof: {
@@ -213,20 +144,12 @@ const locations = {
         music: 'rooftop',
         platforms: [{ x: 0, y: GROUND_Y, w: 1000, h: 60 }],
         objects: [
-            {
-                x: 500, y: GROUND_Y - 60, w: 40, h: 60,
-                type: 'npc', name: '🌅 Закат',
-                dialogue: ['Время принять главное решение в жизни.'],
-                action: 'scene_finale',
-                needs: { rep: 70 }
-            },
-            {
-                x: 100, y: GROUND_Y - 40, w: 40, h: 60,
-                type: 'door', name: '⬇️ Вниз',
-                dialogue: ['Спуститься обратно.'],
-                action: 'goto_business',
-                needs: {}
-            }
+            { x: 500, y: GROUND_Y - 60, w: 40, h: 60, type: 'npc', name: '🌅 Закат',
+              dialogue: ['Время принять главное решение в жизни.'],
+              action: 'scene_finale', needs: {} },
+            { x: 100, y: GROUND_Y - 40, w: 40, h: 60, type: 'door', name: '⬇️ Вниз',
+              dialogue: ['Спуститься обратно.'],
+              action: 'goto_business', needs: {} }
         ]
     }
 };
@@ -247,6 +170,8 @@ const PROLOGUE = [
 ];
 
 // ================= СЮЖЕТНЫЕ СЦЕНЫ =================
+// cost — сколько нужно и списывается
+// reward — сколько прибавляется В КОНЦЕ сцены
 const STORY_SCENES = {
     scene_crypto_start: {
         once: true,
@@ -260,6 +185,7 @@ const STORY_SCENES = {
         nextQuest: 'Поговорить с уличным музыкантом'
     },
     scene_street_music: {
+        // НЕ once — можно фармить, но без повторов подряд
         lines: [
             { text: 'Ты присоединяешься к уличному музыканту.', portrait: '🎸' },
             { text: 'Играете несколько часов у метро.', portrait: '🎶' },
@@ -357,7 +283,8 @@ const STORY_SCENES = {
             { text: 'На счёт приходит сумма с шестью нулями.', portrait: '💰' },
             { text: 'Ты обеспечил себя и семью на годы вперёд.', portrait: '🏦' },
             { text: '🏆 ФИНАЛ: Богатый и успешный!', portrait: '💎', win: 'rich' }
-        ]
+        ],
+        reward: { money: 100000 }
     },
     ending_wise: {
         once: true,
@@ -366,7 +293,8 @@ const STORY_SCENES = {
             { text: 'Вместо этого — развиваешь продукт.', portrait: '📈' },
             { text: 'Через год твоим приложением пользуются миллионы.', portrait: '🌍' },
             { text: '🏆 ФИНАЛ: Мудрый основатель!', portrait: '🌟', win: 'wise' }
-        ]
+        ],
+        reward: { money: 50000, rep: 100 }
     }
 };
 
@@ -379,7 +307,6 @@ const cutsceneNextBtn = document.getElementById('cutscene-next');
 const dialogueEl = document.getElementById('dialogue');
 const dialogueNameEl = document.getElementById('dialogue-name');
 const dialogueTextEl = document.getElementById('dialogue-text');
-const dialogueChoicesEl = document.getElementById('dialogue-choices');
 const dialogueNextBtn = document.getElementById('dialogue-next');
 const hintEl = document.getElementById('hint');
 const moneyEl = document.getElementById('money');
@@ -402,6 +329,7 @@ let cutsceneLines = [];
 let cutsceneIdx = 0;
 let cutsceneAfter = null;
 let cutsceneIsPrologue = false;
+let cutsceneRewardApplied = false;   // защита от повторного применения награды
 
 let dialogueActive = false;
 let dialogueObject = null;
@@ -433,15 +361,22 @@ function applyReward(reward) {
     }
     if (reward.rep) state.rep += reward.rep;
     updateHUD();
+    console.log('💰 Reward applied:', reward, '→ Money:', state.money, 'Rep:', state.rep);
 }
 
 // ================= КАТ-СЦЕНЫ =================
-function showCutscene(lines, after, isPrologue = false) {
+function showCutscene(lines, after, isPrologue = false, reward = null, nextQuest = null) {
     state.phase = 'cutscene';
     cutsceneLines = lines.map(l => ({ ...l }));
     cutsceneIdx = 0;
     cutsceneAfter = after;
     cutsceneIsPrologue = isPrologue;
+    cutsceneRewardApplied = false;
+
+    // Сохраняем награду и квест — применим ТОЛЬКО ОДИН РАЗ в самом конце
+    cutsceneEl._pendingReward = reward;
+    cutsceneEl._pendingQuest = nextQuest;
+
     cutsceneEl.classList.remove('hidden');
     startScreen.classList.add('hidden');
     AudioSys.playMusic('cutscene');
@@ -495,14 +430,20 @@ function chooseCutsceneOption(action) {
     const cont = cutsceneEl.querySelector('#cutscene-choices');
     if (cont) cont.remove();
 
-    // Завершаем текущую сцену без применения награды
+    // Закрываем текущую сцену без применения награды (финальная сцена не имеет reward)
     cutsceneEl.classList.add('hidden');
     cutsceneNextBtn.classList.remove('hidden');
 
     const scene = STORY_SCENES[action];
     if (scene) {
+        // Применяем награду финальной сцены сразу
+        if (scene.reward) applyReward(scene.reward);
+        if (scene.nextQuest) {
+            state.quest = scene.nextQuest;
+            updateQuest();
+        }
         setTimeout(() => {
-            showCutscene(scene.lines, null, false);
+            showCutscene(scene.lines, null, false, null, null);
         }, 300);
     } else {
         state.phase = 'game';
@@ -526,11 +467,21 @@ function nextCutscene() {
 }
 
 function endCutscene() {
-    // Награда последней строки
-    const lastLine = cutsceneLines[cutsceneLines.length - 1];
-    if (lastLine && lastLine.reward) {
-        applyReward(lastLine.reward);
-        lastLine.reward = null;
+    // Применяем награду РОВНО ОДИН РАЗ
+    if (!cutsceneRewardApplied) {
+        const reward = cutsceneEl._pendingReward;
+        const nextQuest = cutsceneEl._pendingQuest;
+        if (reward) {
+            applyReward(reward);
+            console.log('✅ Награда применена в конце сцены:', reward);
+        }
+        if (nextQuest) {
+            state.quest = nextQuest;
+            updateQuest();
+        }
+        cutsceneRewardApplied = true;
+        cutsceneEl._pendingReward = null;
+        cutsceneEl._pendingQuest = null;
     }
 
     cutsceneEl.classList.add('hidden');
@@ -593,8 +544,6 @@ function startDialogue(obj) {
     dialogueIdx = 0;
     dialogueActive = true;
     dialogueEl.classList.remove('hidden');
-    dialogueChoicesEl.classList.add('hidden');
-    dialogueChoicesEl.innerHTML = '';
     dialogueNextBtn.classList.remove('hidden');
     showDialogueLine();
     AudioSys.play('interact');
@@ -627,24 +576,14 @@ function endDialogue() {
     dialogueObject = null;
     dialogueEl.classList.add('hidden');
 
-    const needs = obj.needs || {};
-    if (needs.money && state.money < needs.money) {
-        AudioSys.play('fail');
-        showToast('Нужно ' + needs.money + '₽!');
-        return;
-    }
-    if (needs.rep && state.rep < needs.rep) {
-        AudioSys.play('fail');
-        showToast('Нужно ' + needs.rep + ' репутации!');
-        return;
-    }
-
+    // === Переходы между локациями ===
     if (obj.action === 'goto_spb')      { switchLocation('spb'); return; }
     if (obj.action === 'goto_room')     { switchLocation('room'); return; }
     if (obj.action === 'goto_cafe')     { switchLocation('cafe'); return; }
     if (obj.action === 'goto_business') { switchLocation('business'); return; }
     if (obj.action === 'goto_roof')     { switchLocation('roof'); return; }
 
+    // === Простые действия ===
     if (obj.action === 'poster') {
         AudioSys.play('coin');
         state.rep += 1;
@@ -664,15 +603,31 @@ function endDialogue() {
         return;
     }
 
+    // === Сюжетные сцены ===
     const scene = STORY_SCENES[obj.action];
     if (!scene) return;
 
+    // Проверка одноразовости
     if (scene.once && state.flags[obj.action + '_done']) {
         AudioSys.play('fail');
         showToast('Это задание уже выполнено');
         return;
     }
 
+    // Проверка требований объекта (needs)
+    const needs = obj.needs || {};
+    if (needs.money && state.money < needs.money) {
+        AudioSys.play('fail');
+        showToast('Нужно ' + needs.money + '₽!');
+        return;
+    }
+    if (needs.rep && state.rep < needs.rep) {
+        AudioSys.play('fail');
+        showToast('Нужно ' + needs.rep + ' репутации!');
+        return;
+    }
+
+    // Проверка и списание cost
     if (scene.cost) {
         if (state.money < scene.cost) {
             AudioSys.play('fail');
@@ -681,17 +636,15 @@ function endDialogue() {
         }
         state.money -= scene.cost;
         updateHUD();
+        console.log('💸 Списано:', scene.cost, '→ Money:', state.money);
     }
 
+    // Помечаем как выполненное
     if (scene.once) state.flags[obj.action + '_done'] = true;
 
-    if (scene.nextQuest) {
-        state.quest = scene.nextQuest;
-        updateQuest();
-    }
-
+    // Показываем кат-сцену с наградой и квестом
     const linesCopy = scene.lines.map(l => ({ ...l }));
-    showCutscene(linesCopy, null, false);
+    showCutscene(linesCopy, null, false, scene.reward, scene.nextQuest);
 }
 
 // ================= ЛОКАЦИИ =================
@@ -828,7 +781,7 @@ function updateQuest() {
 
 // ================= ОБНОВЛЕНИЕ =================
 function update(dt) {
-    if (state.phase === 'cutscene') return;
+    if (state.phase !== 'game') return;
     if (dialogueActive) return;
 
     player.vx = 0;
@@ -884,7 +837,7 @@ function update(dt) {
     camera.x = Math.max(0, Math.min(world.width - viewWidth, camera.x));
 
     const near = getNearbyObject();
-    if (near && !dialogueActive) {
+    if (near) {
         btnInteract.classList.remove('hidden');
         hintEl.textContent = '✋ ' + near.name;
     } else {
@@ -1172,7 +1125,7 @@ function loop(now) {
     accumulator += delta;
     time += delta / 16;
     while (accumulator >= STEP) {
-        if (state.phase === 'game' || state.phase === 'chapter') update(delta);
+        update(delta);
         accumulator -= STEP;
     }
     render();
